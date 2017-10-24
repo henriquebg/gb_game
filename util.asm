@@ -14,7 +14,7 @@ WAIT_VBLANK::
 ;  jr nz,DMA_COPY_LOOP                ;2 bytes, 12 cycles if it jumps, 8 if it doesn't
 ;  ret                        ;1 byte, 16 cycles.
 
-DMA_COPY:
+DMA_COPY::
   ; load de with the HRAM destination address
   ld  de,$FF80
 
@@ -54,7 +54,7 @@ CLEAR_OAM_LOOP::
 
 CLEAR_RAM::
   ld  hl,$C100
-  ld  bc,$A0
+  ld  bc,$0FFF
 CLEAR_RAM_LOOP::
   ld  a,$0
   ld  [hli],a
@@ -108,7 +108,7 @@ COPY_DATA_LOOP::
 LOAD_TILES::
 	ld	hl,TILES
 	ld	de,_VRAM
-	ld	bc,3*16	;we have 9 tiles and each tile takes 16 bytes
+	ld	bc,NUM_TILES*16	;we have 9 tiles and each tile takes 16 bytes
 LOAD_TILES_LOOP::
 	ld	a,[hl+]	;get a byte from our tiles, and increment.
 	ld	[de],a	;put that byte in VRAM and

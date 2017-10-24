@@ -1,9 +1,11 @@
-INCLUDE "hardware.inc"
-INCLUDE "cabecalho.asm"
+INCLUDE "constantes.asm"
 INCLUDE "variaveis.asm"
+INCLUDE "cabecalho.asm"
 INCLUDE "util.asm"
 INCLUDE "tiles.asm"
 INCLUDE "maps.asm"
+INCLUDE "nave.asm"
+INCLUDE "tiro.asm"
 
 ;****************************************************************************************************************************************************
 ;*	Program Start
@@ -31,55 +33,17 @@ START::
     ld  a,%11010011
     ldh [rLCDC],a
 
-    ld a,80
-    ld [sprite_nave],a
-    ld a,72
-    ld [sprite_nave+1],a
-    ld a,$01
-    ld [sprite_nave+2],a
-    ld a,$00
-    ld [sprite_nave+3],a
-
+    call INICIA_NAVE
+    call INICIA_TIRO
     call DMA_COPY
     call $FF80
 
 LOOP::
 	call WAIT_VBLANK
     call READ_JOYPAD
-    
-    ld  a,[joypad_down]
-    call JOY_LEFT
-    jr  nz,CHECK_RIGHT
-    ld a,[sprite_nave+1]
-    dec a
-    ld [sprite_nave+1],a
-
-CHECK_RIGHT::
-    ld  a,[joypad_down]
-    call JOY_RIGHT
-    jr  nz,CHECK_UP
-    ld a,[sprite_nave+1]
-    inc a
-    ld [sprite_nave+1],a
-
-CHECK_UP::
-    ld  a,[joypad_down]
-    call JOY_UP
-    jr  nz,CHECK_DOWN
-    ld a,[sprite_nave]
-    dec a
-    ld [sprite_nave],a
-
-CHECK_DOWN::
-    ld  a,[joypad_down]
-    call JOY_DOWN
-    jr  nz,CONTINUE
-    ld a,[sprite_nave]
-    inc a
-    ld [sprite_nave],a
-
-CONTINUE::
+    call ATUALIZA_NAVE
+    call ATUALIZA_TIRO
     call $FF80
-	nop
+    nop
 	jp LOOP
 
