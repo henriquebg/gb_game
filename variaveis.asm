@@ -14,5 +14,6 @@ nave_direcao:   DB
 
 SECTION "OAM Vars",WRAM0[$C100]
 
-sprite_nave: DS 4
+sprite1_nave: DS 4
+sprite2_nave: DS 4
 sprite_tiro: DS 4

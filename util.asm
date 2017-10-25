@@ -120,7 +120,7 @@ LOAD_TILES_LOOP::
 	ret			;done
 
 LOAD_MAP::
-	ld	hl,MAP0	;our little map
+	ld	hl,MAP	;our little map
 	ld	de,_SCRN0	;where our map goes
   ld bc,1024		;since we are only loading 1024 tiles
 LOAD_MAP_LOOP::

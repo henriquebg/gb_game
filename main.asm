@@ -29,12 +29,15 @@ START::
     ld	a,%11100100	;load a normal palette up 11 10 01 00 - dark->light
 	ldh	[rBGP],a	;load the palette
 
+    ld	a,%11100100	;load a normal palette up 11 10 01 00 - dark->light
+	ldh	[rOBP0],a	;load the palette
+
 	;turn on LCD, BG0, OBJ0, etc
     ld  a,%11010011
     ldh [rLCDC],a
 
     call INICIA_NAVE
-    call INICIA_TIRO
+    ;call INICIA_TIRO
     call DMA_COPY
     call $FF80
 
@@ -42,7 +45,7 @@ LOOP::
 	call WAIT_VBLANK
     call READ_JOYPAD
     call ATUALIZA_NAVE
-    call ATUALIZA_TIRO
+    ;call ATUALIZA_TIRO
     call $FF80
     nop
 	jp LOOP

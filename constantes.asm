@@ -33,7 +33,7 @@ rev_Check_hardware_inc: MACRO
         ENDM
 
 ;Custom constantes
-NUM_TILES EQU $04
+NUM_TILES EQU $19
 
 _HW	EQU $FF00
 
