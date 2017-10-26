@@ -1,5 +1,7 @@
-del game.o
-del game.gb
-rgbasm -o game.o main.asm
-rgblink -t -d -o game.gb game.o
+del bin\game.o
+del bin\game.gb
+cd src
+rgbasm -o ..\bin\game.o main.asm
+cd ..
+rgblink -t -d -o bin\game.gb bin\game.o
 pause

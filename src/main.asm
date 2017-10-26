@@ -26,10 +26,10 @@ START::
     call LOAD_TILES
     call LOAD_MAP
 	
-    ld	a,%11100100	;load a normal palette up 11 10 01 00 - dark->light
+    ld	a,%00000000	;load a normal palette up 11 10 01 00 - dark->light
 	ldh	[rBGP],a	;load the palette
 
-    ld	a,%11100100	;load a normal palette up 11 10 01 00 - dark->light
+    ld	a,%00000000	;load a normal palette up 11 10 01 00 - dark->light
 	ldh	[rOBP0],a	;load the palette
 
 	;turn on LCD, BG0, OBJ0, etc
@@ -37,16 +37,57 @@ START::
     ldh [rLCDC],a
 
     call INICIA_NAVE
-    ;call INICIA_TIRO
+    call INICIA_TIRO
+    ld a,_SCROLL_DELAY
+    ld [scroll_delay],a
+    ld a,$04
+    ld [efeito_delay],a
+    ld a,$00
+    ld [comecou],a
     call DMA_COPY
-    call $FF80
+    ei
 
 LOOP::
 	call WAIT_VBLANK
     call READ_JOYPAD
-    call ATUALIZA_NAVE
-    ;call ATUALIZA_TIRO
-    call $FF80
+    ld a,[comecou]
+    cp $01
+    jp z,COMECA_JOGO
+    ld  a,[joypad_down]
+    call JOY_START
+    jp nz,LOOP
+    call REPOSICIONA_NAVE
+    call ANIMACAO_EFEITO
+    ld a,$01
+    ld [comecou],a
+    call ESPERA1S
     nop
 	jp LOOP
+
+ANIMACAO_EFEITO::
+    ld	a,%01000000
+	ldh	[rBGP],a
+    ld	a,%01000000
+	ldh	[rOBP0],a
+    call ESPERA1S
+    ld	a,%10010000
+	ldh	[rBGP],a
+    ld	a,%10010000
+	ldh	[rOBP0],a
+    call ESPERA1S
+    ld	a,%11100100
+	ldh	[rBGP],a
+    ld	a,%11100100
+	ldh	[rOBP0],a
+    call ESPERA1S
+    ret
+
+COMECA_JOGO::
+    call ATUALIZA_NAVE
+    call ATUALIZA_TIRO
+    call $FF80
+    call SCROLL_BACKGROUND
+    nop
+    jp LOOP
+
 

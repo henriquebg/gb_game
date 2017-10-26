@@ -52,3 +52,5 @@ DB $A5,$7F,$8B,$7F,$37,$FF,$CF,$FF
 DB $1F,$FF,$7F,$FF,$7F,$FF,$FF,$FF
 DB $FF,$FF,$FF,$FF,$F7,$FF,$FF,$FF
 DB $FF,$FF,$FF,$FF,$FF,$FF,$FF,$FF
+DB $00,$00,$00,$00,$00,$00,$00,$00
+DB $00,$00,$00,$00,$05,$0A,$05,$0A

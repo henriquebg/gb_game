@@ -5,15 +5,6 @@ WAIT_VBLANK::
 	jr	nz,WAIT_VBLANK	;if A-91 != 0 then loop
 	ret				;done
 
-;DMA_COPY::
-;  ld a,$C1   ;3 bytes, 16 cycles
-;  ldh [rDMA],a               ;2 bytes, 12 cycles - note the "LDH", not LD
-;  ld a,40                    ;2 bytes, 8 cycles
-;DMA_COPY_LOOP::
-;  dec a                      ;1 byte, 4 cycles
-;  jr nz,DMA_COPY_LOOP                ;2 bytes, 12 cycles if it jumps, 8 if it doesn't
-;  ret                        ;1 byte, 16 cycles.
-
 DMA_COPY::
   ; load de with the HRAM destination address
   ld  de,$FF80
@@ -108,7 +99,7 @@ COPY_DATA_LOOP::
 LOAD_TILES::
 	ld	hl,TILES
 	ld	de,_VRAM
-	ld	bc,NUM_TILES*16	;we have 9 tiles and each tile takes 16 bytes
+	ld	bc,_NUM_TILES*16	;we have 9 tiles and each tile takes 16 bytes
 LOAD_TILES_LOOP::
 	ld	a,[hl+]	;get a byte from our tiles, and increment.
 	ld	[de],a	;put that byte in VRAM and
@@ -227,3 +218,36 @@ JOY_START::
 JOY_FALSE::
   ld  a,$0
   ret
+
+SCROLL_BACKGROUND::
+  ld a,[scroll_delay]
+  dec a
+  cp $00
+  jp nz,PULA_SCROLL
+  ld a,_SCROLL_DELAY
+  ld [scroll_delay],a
+  ld a,[rSCX]
+  inc a
+  ld [rSCX], a
+  ret
+
+PULA_SCROLL::
+  ld [scroll_delay],a
+  ret
+
+ESPERA1S::
+    ld c,$08
+ESPERA_LOOP_EXT2::
+    ld b,$64
+ESPERA_LOOP_EXT1::
+    ld a,$FA
+ESPERA_LOOP_INT::
+    dec a
+    jp nz,ESPERA_LOOP_INT
+    dec b
+    ld a,b
+    jp nz,ESPERA_LOOP_EXT1
+    dec c
+    ld a,c
+    jp nz,ESPERA_LOOP_EXT2
+    ret

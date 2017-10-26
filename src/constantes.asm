@@ -32,8 +32,9 @@ rev_Check_hardware_inc: MACRO
         ENDC
         ENDM
 
-;Custom constantes
-NUM_TILES EQU $19
+;Constantes personalizadas
+_NUM_TILES EQU $1A
+_SCROLL_DELAY EQU $04
 
 _HW	EQU $FF00
 

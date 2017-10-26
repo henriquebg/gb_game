@@ -12,6 +12,10 @@ atirando:       DB
 
 nave_direcao:   DB
 
+scroll_delay    DB
+comecou         DB
+efeito_delay    DB
+
 SECTION "OAM Vars",WRAM0[$C100]
 
 sprite1_nave: DS 4
