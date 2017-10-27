@@ -1,0 +1,196 @@
+ROM Bank #0 (HOME):
+  SECTION: $0000-$0002 ($0003 bytes) ["Org $00"]
+           $0000 = RST_00
+  SECTION: $0008-$000A ($0003 bytes) ["Org $08"]
+           $0008 = RST_08
+  SECTION: $0010-$0012 ($0003 bytes) ["Org $10"]
+           $0010 = RST_10
+  SECTION: $0018-$001A ($0003 bytes) ["Org $18"]
+           $0018 = RST_18
+  SECTION: $0020-$0022 ($0003 bytes) ["Org $20"]
+           $0020 = RST_20
+  SECTION: $0028-$002A ($0003 bytes) ["Copy Data"]
+           $0028 = RST_28
+  SECTION: $0030-$0032 ($0003 bytes) ["Org $30"]
+           $0030 = RST_30
+  SECTION: $0038-$003A ($0003 bytes) ["Org $38"]
+           $0038 = RST_38
+  SECTION: $0040-$0040 ($0001 bytes) ["V-Blank IRQ Vector"]
+           $0040 = VBL_VECT
+  SECTION: $0048-$0048 ($0001 bytes) ["LCD IRQ Vector"]
+           $0048 = LCD_VECT
+  SECTION: $0050-$0050 ($0001 bytes) ["Timer IRQ Vector"]
+           $0050 = TIMER_VECT
+  SECTION: $0058-$0058 ($0001 bytes) ["Serial IRQ Vector"]
+           $0058 = SERIAL_VECT
+  SECTION: $0060-$00F8 ($0099 bytes) ["Joypad IRQ Vector"]
+           $0060 = JOYPAD_VECT
+  SECTION: $0100-$014B ($004C bytes) ["Start"]
+  SECTION: $0780-$08D8 ($0159 bytes) ["Utilitarios"]
+           $07CA = COPY_DATA
+           $087F = JOY_FALSE
+           $0896 = PULA_SCROLL
+           $089E = ESPERA_LOOP_INT
+           $089C = ESPERA_LOOP_EXT1
+           $089A = ESPERA_LOOP_EXT2
+           $089A = ESPERA1S
+           $0857 = JOY_A
+           $0843 = JOY_UP
+           $084D = JOY_DOWN
+           $082F = JOY_RIGHT
+           $0839 = JOY_LEFT
+           $08D5 = NUMERO_RANDOMICO
+           $0780 = WAIT_VBLANK
+           $079D = CLEAR_MAP
+           $07AC = CLEAR_OAM
+           $07BB = CLEAR_RAM
+           $07DB = LOAD_TILES
+           $07ED = LOAD_MAP
+           $0787 = DMA_COPY
+           $07FF = READ_JOYPAD
+           $0875 = JOY_START
+           $08AD = ANIMACAO_EFEITO
+           $0882 = SCROLL_BACKGROUND
+           $0861 = JOY_B
+           $07E4 = LOAD_TILES_LOOP
+           $07B2 = CLEAR_OAM_LOOP
+           $086B = JOY_SELECT
+           $07D0 = COPY_DATA_LOOP
+           $07F6 = LOAD_MAP_LOOP
+           $07A5 = CLEAR_MAP_LOOP
+           $07C1 = CLEAR_RAM_LOOP
+  SECTION: $05D0-$077F ($01B0 bytes) ["Tiles"]
+           $05D0 = TILES
+  SECTION: $01D0-$05CF ($0400 bytes) ["Maps"]
+           $01D0 = MAP
+  SECTION: $08D9-$09B1 ($00D9 bytes) ["Nave"]
+           $0937 = CHECK_UP
+           $0957 = CHECK_DOWN
+           $0977 = CHECK_RIGHT
+           $0994 = CHECK_LEFT
+           $09B1 = FIM_NAVE
+           $08D9 = INICIA_NAVE
+           $0902 = REPOSICIONA_NAVE
+           $0910 = ATUALIZA_NAVE
+  SECTION: $0A6A-$0AD8 ($006F bytes) ["Tiro"]
+           $0AD8 = FIM_TIRO
+           $0A9A = MOVE_DIREITA
+           $0AD2 = RESETA_TIRO
+           $0A6A = INICIA_TIRO
+           $0A89 = ATUALIZA_TIRO
+  SECTION: $09B2-$0A69 ($00B8 bytes) ["Inimigo"]
+           $09B2 = INICIA_INIMIGO
+           $09F2 = MUDA_DIRECAO_CIMA
+           $09FB = MUDA_DIRECAO_BAIXO
+           $0A04 = MOVE_INIMIGO
+           $0A12 = MOVE_BAIXO
+           $0A3A = MOVE_CIMA
+           $0A62 = FIM_INIMIGO
+           $09E1 = ATUALIZA_INIMIGO
+  SECTION: $0150-$01CF ($0080 bytes) ["Inicio"]
+           $0150 = START
+           $01BD = COMECA_JOGO
+           $0192 = LOOP
+    SLACK: $3576 bytes
+
+WRAM Bank #0:
+  SECTION: $C000-$C00D ($000E bytes) ["RAM Vars"]
+           $C002 = joypad_down
+           $C003 = joypad_pressed
+           $C007 = scroll_delay
+           $C005 = atirando
+           $C004 = tiro_direcao
+           $C00C = sprite_inimigo_fim_x
+           $C00D = sprite_inimigo_fim_y
+           $C00A = inimigo_direcao
+           $C00B = inimigo_delay
+           $C009 = efeito_delay
+           $C008 = comecou
+  SECTION: $C100-$C10F ($0010 bytes) ["OAM Vars"]
+           $C100 = sprite1_nave
+           $C104 = sprite2_nave
+           $C108 = sprite_tiro
+           $C10C = sprite_inimigo
+    SLACK: $0FE2 bytes
+
+WRAM Bank #1:
+  EMPTY
+
+WRAM Bank #2:
+  EMPTY
+
+WRAM Bank #3:
+  EMPTY
+
+WRAM Bank #4:
+  EMPTY
+
+WRAM Bank #5:
+  EMPTY
+
+WRAM Bank #6:
+  EMPTY
+
+WRAM Bank #7:
+  EMPTY
+
+VRAM Bank #0:
+  EMPTY
+
+VRAM Bank #1:
+  EMPTY
+
+OAM:
+  EMPTY
+
+HRAM:
+  EMPTY
+
+SRAM Bank #0:
+  EMPTY
+
+SRAM Bank #1:
+  EMPTY
+
+SRAM Bank #2:
+  EMPTY
+
+SRAM Bank #3:
+  EMPTY
+
+SRAM Bank #4:
+  EMPTY
+
+SRAM Bank #5:
+  EMPTY
+
+SRAM Bank #6:
+  EMPTY
+
+SRAM Bank #7:
+  EMPTY
+
+SRAM Bank #8:
+  EMPTY
+
+SRAM Bank #9:
+  EMPTY
+
+SRAM Bank #10:
+  EMPTY
+
+SRAM Bank #11:
+  EMPTY
+
+SRAM Bank #12:
+  EMPTY
+
+SRAM Bank #13:
+  EMPTY
+
+SRAM Bank #14:
+  EMPTY
+
+SRAM Bank #15:
+  EMPTY
+

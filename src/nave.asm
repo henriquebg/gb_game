@@ -41,10 +41,6 @@ ATUALIZA_NAVE::
     ld [sprite_tiro],a
     ld a,[sprite1_nave+1]
     ld [sprite_tiro+1],a
-    ld a,$19
-    ld [sprite_tiro+2],a
-    ld a,$00
-    ld [sprite_tiro+3],a
     jp CHECK_UP
     ret
 
@@ -54,7 +50,7 @@ CHECK_UP::
     jp  nz,CHECK_DOWN
     ld a,[sprite1_nave]
     dec a
-    cp $0F
+    cp _BORDA_SUPERIOR
     jp c,CHECK_DOWN
     ld [sprite1_nave],a
     ld a,[sprite2_nave]
@@ -69,7 +65,7 @@ CHECK_DOWN::
     jp  nz,CHECK_RIGHT
     ld a,[sprite1_nave]
     inc a
-    cp $92
+    cp _BORDA_INFERIOR
     jp nc,CHECK_RIGHT
     ld [sprite1_nave],a
     ld a,[sprite2_nave]
@@ -84,7 +80,7 @@ CHECK_RIGHT::
     jp  nz,CHECK_LEFT
     ld a,[sprite1_nave+1]
     inc a
-    cp $A0
+    cp _BORDA_DIREITA
     jp nc,CHECK_LEFT
     ld [sprite1_nave+1],a
     ld a,[sprite2_nave+1]
@@ -98,7 +94,7 @@ CHECK_LEFT::
     jp  nz,FIM_NAVE
     ld a,[sprite1_nave+1]
     dec a
-    cp $09
+    cp _BORDA_ESQUERDA
     jp c,FIM_NAVE
     ld [sprite1_nave+1],a
     ld a,[sprite2_nave+1]

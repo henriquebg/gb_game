@@ -235,8 +235,8 @@ PULA_SCROLL::
   ld [scroll_delay],a
   ret
 
+;O registro c precisa ser carregado previamente $08 ~ 1s, $04 ~ 0.5s $0F ~ 2s... 
 ESPERA1S::
-    ld c,$08
 ESPERA_LOOP_EXT2::
     ld b,$64
 ESPERA_LOOP_EXT1::
@@ -251,3 +251,35 @@ ESPERA_LOOP_INT::
     ld a,c
     jp nz,ESPERA_LOOP_EXT2
     ret
+  
+ANIMACAO_EFEITO::
+  ld	a,%01000000
+	ldh	[rBGP],a
+  ld	a,%00010000
+	ldh	[rOBP0],a
+  ld c,$04
+  call ESPERA1S
+  ld	a,%10010000
+	ldh	[rBGP],a
+  ld	a,%00010000
+	ldh	[rOBP0],a
+   ld c,$04
+  call ESPERA1S
+  ld	a,%11100100
+	ldh	[rBGP],a
+  ld	a,%00100111
+	ldh	[rOBP0],a
+  ld c,$04
+  call ESPERA1S
+  ret
+
+;Gera um número randômico a partir do scroll_x. O registro b precisa ser
+;previamente carregado com uma máscara.
+;Ex:
+;ld b,%00011111 resultará em um número entre 0 e 32
+;ld b,%01111110 resultará em um número entre 2 e 128
+;ld b,%11111100 resultará em um número entre 4 e 255
+NUMERO_RANDOMICO::
+  ld a,[rSCX]
+  and b
+  ret

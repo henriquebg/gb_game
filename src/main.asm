@@ -6,6 +6,7 @@ INCLUDE "tiles.asm"
 INCLUDE "maps.asm"
 INCLUDE "nave.asm"
 INCLUDE "tiro.asm"
+INCLUDE "inimigo.asm"
 
 ;****************************************************************************************************************************************************
 ;*	Program Start
@@ -38,6 +39,7 @@ START::
 
     call INICIA_NAVE
     call INICIA_TIRO
+    call INICIA_INIMIGO
     ld a,_SCROLL_DELAY
     ld [scroll_delay],a
     ld a,$04
@@ -60,31 +62,15 @@ LOOP::
     call ANIMACAO_EFEITO
     ld a,$01
     ld [comecou],a
+    ld c,$08
     call ESPERA1S
     nop
 	jp LOOP
 
-ANIMACAO_EFEITO::
-    ld	a,%01000000
-	ldh	[rBGP],a
-    ld	a,%01000000
-	ldh	[rOBP0],a
-    call ESPERA1S
-    ld	a,%10010000
-	ldh	[rBGP],a
-    ld	a,%10010000
-	ldh	[rOBP0],a
-    call ESPERA1S
-    ld	a,%11100100
-	ldh	[rBGP],a
-    ld	a,%11100100
-	ldh	[rOBP0],a
-    call ESPERA1S
-    ret
-
 COMECA_JOGO::
     call ATUALIZA_NAVE
     call ATUALIZA_TIRO
+    call ATUALIZA_INIMIGO
     call $FF80
     call SCROLL_BACKGROUND
     nop
