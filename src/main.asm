@@ -25,9 +25,14 @@ START::
     call CLEAR_OAM
     call CLEAR_RAM
     call LOAD_TILES
+    ld	de,_SCRN0	;where our map goes
+    ld	hl,MAP0	;our little map
+    call LOAD_MAP
+    ld	de,_SCRN1	;where our map goes
+    ld	hl,MAP1	;our little map
     call LOAD_MAP
 	
-    ld	a,%00000000	;load a normal palette up 11 10 01 00 - dark->light
+    ld	a,%11100100	;load a normal palette up 11 10 01 00 - dark->light
 	ldh	[rBGP],a	;load the palette
 
     ld	a,%00000000	;load a normal palette up 11 10 01 00 - dark->light
@@ -58,8 +63,10 @@ LOOP::
     ld  a,[joypad_down]
     call JOY_START
     jp nz,LOOP
+    ld  a,%11011011
+    ldh [rLCDC],a
     call REPOSICIONA_NAVE
-    call ANIMACAO_EFEITO
+    call FADE_IN
     ld a,$01
     ld [comecou],a
     ld c,$08

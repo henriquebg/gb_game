@@ -26,72 +26,73 @@ ROM Bank #0 (HOME):
   SECTION: $0060-$00F8 ($0099 bytes) ["Joypad IRQ Vector"]
            $0060 = JOYPAD_VECT
   SECTION: $0100-$014B ($004C bytes) ["Start"]
-  SECTION: $0780-$08D8 ($0159 bytes) ["Utilitarios"]
-           $07CA = COPY_DATA
-           $087F = JOY_FALSE
-           $0896 = PULA_SCROLL
-           $089E = ESPERA_LOOP_INT
-           $089C = ESPERA_LOOP_EXT1
-           $089A = ESPERA_LOOP_EXT2
-           $089A = ESPERA1S
-           $0857 = JOY_A
-           $0843 = JOY_UP
-           $084D = JOY_DOWN
-           $082F = JOY_RIGHT
-           $0839 = JOY_LEFT
-           $08D5 = NUMERO_RANDOMICO
-           $0780 = WAIT_VBLANK
-           $079D = CLEAR_MAP
-           $07AC = CLEAR_OAM
-           $07BB = CLEAR_RAM
-           $07DB = LOAD_TILES
-           $07ED = LOAD_MAP
-           $0787 = DMA_COPY
-           $07FF = READ_JOYPAD
-           $0875 = JOY_START
-           $08AD = ANIMACAO_EFEITO
-           $0882 = SCROLL_BACKGROUND
-           $0861 = JOY_B
-           $07E4 = LOAD_TILES_LOOP
-           $07B2 = CLEAR_OAM_LOOP
-           $086B = JOY_SELECT
-           $07D0 = COPY_DATA_LOOP
-           $07F6 = LOAD_MAP_LOOP
-           $07A5 = CLEAR_MAP_LOOP
-           $07C1 = CLEAR_RAM_LOOP
-  SECTION: $05D0-$077F ($01B0 bytes) ["Tiles"]
-           $05D0 = TILES
-  SECTION: $01D0-$05CF ($0400 bytes) ["Maps"]
-           $01D0 = MAP
-  SECTION: $08D9-$09B1 ($00D9 bytes) ["Nave"]
-           $0937 = CHECK_UP
-           $0957 = CHECK_DOWN
-           $0977 = CHECK_RIGHT
-           $0994 = CHECK_LEFT
-           $09B1 = FIM_NAVE
-           $08D9 = INICIA_NAVE
-           $0902 = REPOSICIONA_NAVE
-           $0910 = ATUALIZA_NAVE
-  SECTION: $0A6A-$0AD8 ($006F bytes) ["Tiro"]
-           $0AD8 = FIM_TIRO
-           $0A9A = MOVE_DIREITA
-           $0AD2 = RESETA_TIRO
-           $0A6A = INICIA_TIRO
-           $0A89 = ATUALIZA_TIRO
-  SECTION: $09B2-$0A69 ($00B8 bytes) ["Inimigo"]
-           $09B2 = INICIA_INIMIGO
-           $09F2 = MUDA_DIRECAO_CIMA
-           $09FB = MUDA_DIRECAO_BAIXO
-           $0A04 = MOVE_INIMIGO
-           $0A12 = MOVE_BAIXO
-           $0A3A = MOVE_CIMA
-           $0A62 = FIM_INIMIGO
-           $09E1 = ATUALIZA_INIMIGO
-  SECTION: $0150-$01CF ($0080 bytes) ["Inicio"]
+  SECTION: $0C03-$0D55 ($0153 bytes) ["Utilitarios"]
+           $0C4D = COPY_DATA
+           $0CFC = JOY_FALSE
+           $0D13 = PULA_SCROLL
+           $0D1B = ESPERA_LOOP_INT
+           $0D19 = ESPERA_LOOP_EXT1
+           $0D17 = ESPERA_LOOP_EXT2
+           $0D17 = ESPERA1S
+           $0CD4 = JOY_A
+           $0CC0 = JOY_UP
+           $0CCA = JOY_DOWN
+           $0CAC = JOY_RIGHT
+           $0CB6 = JOY_LEFT
+           $0D52 = NUMERO_RANDOMICO
+           $0C03 = WAIT_VBLANK
+           $0C20 = CLEAR_MAP
+           $0C2F = CLEAR_OAM
+           $0C3E = CLEAR_RAM
+           $0C5E = LOAD_TILES
+           $0C70 = LOAD_MAP
+           $0C0A = DMA_COPY
+           $0C7C = READ_JOYPAD
+           $0CF2 = JOY_START
+           $0D2A = FADE_IN
+           $0CFF = SCROLL_BACKGROUND
+           $0CDE = JOY_B
+           $0C67 = LOAD_TILES_LOOP
+           $0C35 = CLEAR_OAM_LOOP
+           $0CE8 = JOY_SELECT
+           $0C53 = COPY_DATA_LOOP
+           $0C73 = LOAD_MAP_LOOP
+           $0C28 = CLEAR_MAP_LOOP
+           $0C44 = CLEAR_RAM_LOOP
+  SECTION: $09E3-$0C02 ($0220 bytes) ["Tiles"]
+           $09E3 = TILES
+  SECTION: $01E3-$09E2 ($0800 bytes) ["Maps"]
+           $01E3 = MAP0
+           $05E3 = MAP1
+  SECTION: $0D56-$0E2E ($00D9 bytes) ["Nave"]
+           $0DB4 = CHECK_UP
+           $0DD4 = CHECK_DOWN
+           $0DF4 = CHECK_RIGHT
+           $0E11 = CHECK_LEFT
+           $0E2E = FIM_NAVE
+           $0D56 = INICIA_NAVE
+           $0D7F = REPOSICIONA_NAVE
+           $0D8D = ATUALIZA_NAVE
+  SECTION: $0EE7-$0F55 ($006F bytes) ["Tiro"]
+           $0F55 = FIM_TIRO
+           $0F17 = MOVE_DIREITA
+           $0F4F = RESETA_TIRO
+           $0EE7 = INICIA_TIRO
+           $0F06 = ATUALIZA_TIRO
+  SECTION: $0E2F-$0EE6 ($00B8 bytes) ["Inimigo"]
+           $0E2F = INICIA_INIMIGO
+           $0E6F = MUDA_DIRECAO_CIMA
+           $0E78 = MUDA_DIRECAO_BAIXO
+           $0E81 = MOVE_INIMIGO
+           $0E8F = MOVE_BAIXO
+           $0EB7 = MOVE_CIMA
+           $0EDF = FIM_INIMIGO
+           $0E5E = ATUALIZA_INIMIGO
+  SECTION: $0150-$01E2 ($0093 bytes) ["Inicio"]
            $0150 = START
-           $01BD = COMECA_JOGO
-           $0192 = LOOP
-    SLACK: $3576 bytes
+           $01D0 = COMECA_JOGO
+           $01A1 = LOOP
+    SLACK: $30F9 bytes
 
 WRAM Bank #0:
   SECTION: $C000-$C00D ($000E bytes) ["RAM Vars"]

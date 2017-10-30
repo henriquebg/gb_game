@@ -110,9 +110,9 @@ LOAD_TILES_LOOP::
 	jr	nz,LOAD_TILES_LOOP	;then loop.
 	ret			;done
 
+;Map adress should be loaded previously into hl -> ld hl,MAP
+;Background number should be loaded into de -> ld	de,_SCRN0 or ld	de,_SCRN1
 LOAD_MAP::
-	ld	hl,MAP	;our little map
-	ld	de,_SCRN0	;where our map goes
   ld bc,1024		;since we are only loading 1024 tiles
 LOAD_MAP_LOOP::
 	ld	a,[hl+]	;get a byte of the map and inc hl
@@ -252,7 +252,7 @@ ESPERA_LOOP_INT::
     jp nz,ESPERA_LOOP_EXT2
     ret
   
-ANIMACAO_EFEITO::
+FADE_IN::
   ld	a,%01000000
 	ldh	[rBGP],a
   ld	a,%00010000
@@ -263,7 +263,7 @@ ANIMACAO_EFEITO::
 	ldh	[rBGP],a
   ld	a,%00010000
 	ldh	[rOBP0],a
-   ld c,$04
+  ld c,$04
   call ESPERA1S
   ld	a,%11100100
 	ldh	[rBGP],a
